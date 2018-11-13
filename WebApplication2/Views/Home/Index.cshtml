@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<section>
+    <ul id="tf">
+        <li>姓名<input type="text" name="name" /></li>
+        <li>年龄<input type="text" name="age" /></li>
+        <li>图片<input type="file" name="img" id="myfile" /></li>
+
+    </ul>
+    <ul>
+        <li>
+            <button onclick="test()">提交</button>
+        </li>
+    </ul>
+</section>
+
+<script>
+
+
+
+    function test() {
+        //var form = new FormData(document.getElementById("tf"));
+        //             var req = new XMLHttpRequest();
+        //             req.open("post", "${pageContext.request.contextPath}/public/testupload", false);
+        //             req.send(form);
+
+
+        var form = new FormData();
+        form.append("name", $("input[name='name']").val());
+        form.append("age", $("input[name='age']").val());
+        form.append("file", document.getElementById('myfile').files[0]);
+
+        $.ajax({
+            url: "/home/Submitform",
+            type: "post",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+
+                console.log("over..");
+            },
+            error: function (e) {
+                alert("错误！！");
+
+            }
+        });
+
+    }
+</script>
