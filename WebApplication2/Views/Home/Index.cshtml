@@ -3,12 +3,13 @@
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
-
+<h1>@ViewBag.name</h1>
 <section>
     <ul id="tf">
         <li>姓名<input type="text" name="name" /></li>
         <li>年龄<input type="text" name="age" /></li>
-        <li>图片<input type="file" name="img" id="myfile" /></li>
+        <li>性别<input type="text" name="sex" /></li>
+        <li>地址<input type="text" name="address" /></li>
 
     </ul>
     <ul>
@@ -17,22 +18,19 @@
         </li>
     </ul>
 </section>
-
+<div id="tag"></div>
 <script>
 
 
 
     function test() {
-        //var form = new FormData(document.getElementById("tf"));
-        //             var req = new XMLHttpRequest();
-        //             req.open("post", "${pageContext.request.contextPath}/public/testupload", false);
-        //             req.send(form);
-
 
         var form = new FormData();
         form.append("name", $("input[name='name']").val());
         form.append("age", $("input[name='age']").val());
-        form.append("file", document.getElementById('myfile').files[0]);
+        form.append("sex", $("input[name='sex']").val());
+        form.append("address", $("input[name='address']").val());
+        //form.append("file", document.getElementById('myfile').files[0]);
 
         $.ajax({
             url: "/home/Submitform",
@@ -42,7 +40,7 @@
             contentType: false,
             success: function (data) {
 
-                console.log("over..");
+                $("#tag").text(data);
             },
             error: function (e) {
                 alert("错误！！");
