@@ -9,5 +9,8 @@ namespace WebApplication2.Models
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string sex { get; set; }
+        public string education { get; set; }
+        public string address { get; set; }
     }
 }

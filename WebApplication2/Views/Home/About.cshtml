@@ -1,7 +1,90 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-multiselect.js"></script>
+	<script src="https://cdn.staticfile.org/vue/2.0.0/vue.min.js"></script>
+</head>
+<body>
+    <div id="vue_det">
+        <ol>
 
-<p>Use this area to provide additional information.</p>
+            <li v-for="site in sites">
+                {{ site.name }}
+            </li>
+        </ol>
+        <h1>{{alexa}}</h1>
+        <button onclick="gettime()">获取时间</button>
+
+    </div>
+
+
+    
+    
+    <script type="text/javascript">
+
+        var vm = new Vue({
+            el: '#vue_det',
+            data: {
+                site: "菜鸟教程",
+                url: "www.runoob.com",
+                alexa: "10000",
+                sites: [
+                    { name: 'Runoob' },
+                    { name: 'Google' },
+                    { name: 'Taobao' }
+                ],
+                inputName: ""
+            },
+            methods: {
+                details: function () {
+                    this.alexa = "sssss";
+                },
+                getdate: function () {
+                    this.alexa = new Date().getTime();
+                },
+                querySearch: function (queryString, cb) {
+                    var csvS = this.csvS;
+                    cb(csvS);
+                },
+                watch: {
+                    inputName: {
+                        handler: function () {
+                            this.csvS = [];//这是定义好的用于存放下拉提醒框中数据的数组
+                            var len = this.csvList.length;//csvList是页面初始化时得到的初始全部数据
+                            var arr = [];
+                            for (var i = 0; i < len; i++) {//根据输入框中inputName的值进行模糊匹配
+                                if (this.csvList[i].indexOf(this.inputName) >= 0) {
+                                    arr.push(this.csvList[i]);//符合条件的值都放入arr中
+                                }
+                            }
+                            console.log(arr);
+
+                            //el-autocomplete元素要求数组内是对象，且有value属性，此处做一个格式调整
+                            for (var i = 0; i < arr.length; i++) {
+                                var obj = { value: "" };
+                                obj.value = arr[i];
+                                this.csvS.push(obj);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+
+        function gettime() {
+            $.get("GetData", function (data) {
+                vm.alexa = data;
+                vm.sites = [{ name: data }];
+            });
+
+        }
+
+    </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebModels\WebModels.csproj" />
+    <ProjectReference Include="..\ClassLibrary1\WebModels.csproj" />
   </ItemGroup>
 
 </Project>

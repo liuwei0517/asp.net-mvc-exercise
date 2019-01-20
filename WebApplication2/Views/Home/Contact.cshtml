@@ -1,17 +1,37 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p style="font-size:25px;">计数器: {{ counter }}</p>
+        <button click="add()" style="font-size:25px;">点我</button>
+    </div>
+<script type="text/javascript">
+ var vm = new Vue({
+    el: '#app',
+    data: {
+        counter: 1,
+        sites: [
+            { name: 'Runoob' },
+            { name: 'Google' },
+            { name: 'Taobao' }
+        ]
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+     },
+     methods: {
+         
+     }
+    });
+    function add() {
+        vm.counter++;
+    }
+ vm.$watch('counter', function(nval, oval) {
+    alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+ });
+</script>
+</body>
+</html>

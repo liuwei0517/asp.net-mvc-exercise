@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "multiselect";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+
+
+<label class="control-label col-xs-1" for="sel_search_orderstatus5">筛选</label>
+<div class="col-xs-2" style="margin-top:7px;">
+    <select id="sel_search_orderstatus5" style="width:150px" multiple="multiple" class="multiselect-container">
+        <option value="0">未排产</option>
+        <option value="5">已排产</option>
+        <option value="10">已锁定</option>
+        <option value="25">在制</option>
+        <option value="20">订单提交</option>
+        <option value="30">订单删除</option>
+        <option value="50">订单报废</option>
+    </select>
+</div>
+<script>
+    $(function () {
+        //jQuery('#sel_search_orderstatus5').multipleSelect({
+        //    placeholder: "请选择",
+        //    filter: true
+        //});
+    })
+</script>

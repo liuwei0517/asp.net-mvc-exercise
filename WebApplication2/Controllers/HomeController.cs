@@ -39,13 +39,41 @@ namespace WebApplication2.Controllers
 
             return View();
         }
-
+        public string GetData()
+        {
+            string re = Guid.NewGuid().ToString();
+            return re;
+        }
         public ActionResult Contact()
         {
             
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult multiselect()
+        {
+            return View();
+        }
+        public string GetName(int input)
+        {
+            string re = "";
+            switch (input)
+            {
+                case 0:
+                    re="jack";
+                    break;
+                case 1:
+                    re="jim";
+                    break;
+                case 2:
+                    re = "jon";
+                    break;
+                case 3:
+                    re = "kloye";
+                    break;
+            }
+            return re;
         }
     }
 }
